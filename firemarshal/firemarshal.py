@@ -1,12 +1,15 @@
 #!/usr/bin/env python
 
-# KSP FireMarshal 1.1c
+# KSP FireMarshal
 # draeath@gmail.com
 # LICENSE: Creative Commons Attribution 4.0 International (CC BY 4.0)
 #          http://creativecommons.org/licenses/by/4.0/deed.en_US
 
 # This script computes burn time and other related data for Δv planning.
 # TODO: command-line argument support, as alternative to interactive input.
+
+# please visit the forum post for discussion/comments/etc:
+# http://forum.kerbalspaceprogram.com/threads/65515
 
 from math import exp
 from math import fabs
