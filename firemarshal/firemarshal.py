@@ -13,7 +13,6 @@
 
 from math import exp
 from math import fabs
-from os import system
 from sys import exit
 
 print("\n")
@@ -80,4 +79,5 @@ if (mass_final_fuel < 0):
     print("WARNING: Insufficient fuel for burn!")
 
 print("\n")
-system("pause")
+
+input("Press any key to continue")
