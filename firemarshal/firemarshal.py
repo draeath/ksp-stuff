@@ -19,9 +19,20 @@ from firemath import FireMarshalMath as FMM
 
 if __name__ == '__main__':
 
+    helptext = """
+Welcome! This utility will compute burn time and fuel usage for a given delta-v.
+        Tip: Mg = metric ton = 1000kg
+        Tip: combine expended resources for these calculations. (eg fuel+oxi)
+        Tip: liquid fuel and oxidizer mass is 5kg per unit.
+        Tip: monopropellant mass is 4kg per unit.
+        Tip: specify only the fuel mass for the current stage.
+        Tip: (wet_mass - dry_mass) / capacity = mass per unit
+"""
+
     # Get arguments for application
     parser = argparse.ArgumentParser(
-        description='A utility to compute burn time and fuel useage')
+        description='A utility to compute burn time and fuel useage',
+        epilog=helptext, formatter_class=argparse.RawDescriptionHelpFormatter)
 
     parser.add_argument('--delta-v', '-d',
             help='Desired delta-v in m/s',
@@ -42,16 +53,6 @@ if __name__ == '__main__':
             nargs='+',
             type=float)
 
-    print("\n")
-    print("Welcome! This utility will compute burn time and fuel usage for a given delta-v.")
-    print("\tTip: Mg = metric ton = 1000kg")
-    print("\tTip: combine expended resources for these calculations. (eg fuel+oxi)")
-    print("\tTip: liquid fuel and oxidizer mass is 5kg per unit.")
-    print("\tTip: monopropellant mass is 4kg per unit.")
-    print("\tTip: specify only the fuel mass for the current stage.")
-    print("\tTip: (wet_mass - dry_mass) / capacity = mass per unit")
-    print("\n")
-
     args = parser.parse_args()
 
     if args.delta_v:
@@ -68,7 +69,6 @@ if __name__ == '__main__':
         mass_initial_fuel = args.fuel
     else:
         mass_initial_fuel = fabs(float(input("Fuel mass in Mg?\t\t")))
-    print("\n")
 
     if args.thrust and args.impulse:
         engines = zip(args.thrust, args.impulse)
