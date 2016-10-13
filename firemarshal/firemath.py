@@ -2,10 +2,11 @@
 
 import math
 
-#Constants
+# Constants
+
 
 class FireMarshalMath(object):
-    standard_gravity   = 9.82
+    standard_gravity = 9.82
 
     def __init__(self,
                  mass_initial=0,
@@ -40,9 +41,8 @@ class FireMarshalMath(object):
         self.m_f_fin = self.m_i_f - self.f_e
         self.twr_initial = self.thrust / self.m_i
         self.twr_final = self.thrust / self.m_fin
-        return {'fuel_expended':self.f_e,
-                'mass_final':self.m_fin,
-                'mass_fuel_final':self.m_f_fin,
-                'twr_initial':self.twr_initial,
-                'twr_final':self.twr_final}
-
+        return {'fuel_expended': self.f_e,
+                'mass_final': self.m_fin,
+                'mass_fuel_final': self.m_f_fin,
+                'twr_initial': self.twr_initial,
+                'twr_final': self.twr_final}

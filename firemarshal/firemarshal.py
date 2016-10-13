@@ -35,23 +35,23 @@ Welcome! This utility will compute burn time and fuel usage for a given delta-v.
         epilog=helptext, formatter_class=argparse.RawDescriptionHelpFormatter)
 
     parser.add_argument('--delta-v', '-d',
-            help='Desired delta-v in m/s',
-            type=float)
+                        help='Desired delta-v in m/s',
+                        type=float)
     parser.add_argument('--mass', '-m',
-            help='Initial mass in metric tonnes',
-            type=float)
+                        help='Initial mass in metric tonnes',
+                        type=float)
     parser.add_argument('--fuel', '-f',
-            help='Initial fuel mass in metric tonnes',
-            type=float)
+                        help='Initial fuel mass in metric tonnes',
+                        type=float)
 
     parser.add_argument('--thrust', '-t',
-            help='Thruts of engines, space separated list (-t 100 600 1400)',
-            nargs='+',
-            type=float)
+                        help='Thruts of engines, space separated list (-t 100 600 1400)',
+                        nargs='+',
+                        type=float)
     parser.add_argument('--impulse', '-i',
-            help='Impulse of engines, space separated list (-i 100 600 1400)',
-            nargs='+',
-            type=float)
+                        help='Impulse of engines, space separated list (-i 100 600 1400)',
+                        nargs='+',
+                        type=float)
 
     args = parser.parse_args()
 
@@ -85,7 +85,7 @@ Welcome! This utility will compute burn time and fuel usage for a given delta-v.
             if (inputImpulse == 0):
                 break
             enginenumber += 1
-            engines.append((inputThrust,inputImpulse))
+            engines.append((inputThrust, inputImpulse))
 
     # Compute combined thrust and Isp - lists and iteration! Whee!
     # I am sure there are better ways, but I am lazy.
@@ -99,13 +99,13 @@ Welcome! This utility will compute burn time and fuel usage for a given delta-v.
     specific_impulse = thrust / specific_impulse_denominator
 
     print("\n")
-    print("Calculated thrust:\t\t" + str(round(thrust,4)))
-    print("Calculated specific impulse:\t" + str(round(specific_impulse,4)))
+    print("Calculated thrust:\t\t" + str(round(thrust, 4)))
+    print("Calculated specific impulse:\t" + str(round(specific_impulse, 4)))
     print("\n")
 
     # Initiate math and neeeded functions
     maths = FMM(mass_initial, mass_initial_fuel, specific_impulse, thrust,
-            velocity_delta)
+                velocity_delta)
 
     # Run all the maths
     maths.velocity_exhaust()
